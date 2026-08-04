@@ -6,7 +6,7 @@ import { useTerminal } from "@/hooks/useTerminal";
 export default function TerminalOverlay() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
-  const { history, execute, theme } = useTerminal();
+  const { history, execute, theme } = useTerminal(() => setIsOpen(false));
   const inputRef = useRef<HTMLInputElement>(null);
   const historyRef = useRef<HTMLDivElement>(null);
 

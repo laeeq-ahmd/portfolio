@@ -144,21 +144,61 @@ export default function Hero() {
 
         {/* ─── Scroll hint ────────────────────────────────────────────── */}
         <motion.div
-          className="mt-16 flex items-center gap-3"
+          className="mt-16 flex flex-col gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 4.5 }}
         >
-          <div
-            className="h-px flex-1 max-w-[60px]"
-            style={{ background: "var(--color-cyan)" }}
-          />
-          <p
-            className="text-xs text-[#888] tracking-widest"
-            style={{ fontFamily: "JetBrains Mono, monospace" }}
-          >
-            SCROLL DOWN
-          </p>
+          <div className="flex items-center gap-3">
+            <div
+              className="h-px flex-1 max-w-[60px]"
+              style={{ background: "var(--color-cyan)" }}
+            />
+            <p
+              className="text-xs text-[#888] tracking-widest"
+              style={{ fontFamily: "JetBrains Mono, monospace" }}
+            >
+              SCROLL DOWN
+            </p>
+          </div>
+
+          {/* Keyboard shortcut hints */}
+          <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-2">
+              <kbd
+                className="px-2 py-1 text-[10px] tracking-widest"
+                style={{
+                  fontFamily: "JetBrains Mono, monospace",
+                  background: "#111",
+                  border: "1px solid #333",
+                  color: "var(--color-cyan)",
+                  boxShadow: "0 2px 0 #333",
+                }}
+              >
+                Ctrl + `
+              </kbd>
+              <span className="text-[10px] text-[#555]" style={{ fontFamily: "JetBrains Mono, monospace" }}>
+                open terminal
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <kbd
+                className="px-2 py-1 text-[10px] tracking-widest"
+                style={{
+                  fontFamily: "JetBrains Mono, monospace",
+                  background: "#111",
+                  border: "1px solid #333",
+                  color: "var(--color-cyan)",
+                  boxShadow: "0 2px 0 #333",
+                }}
+              >
+                Ctrl + K
+              </kbd>
+              <span className="text-[10px] text-[#555]" style={{ fontFamily: "JetBrains Mono, monospace" }}>
+                command palette
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

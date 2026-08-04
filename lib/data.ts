@@ -38,11 +38,11 @@ export const missionObjectives = [
 export const skillCategories = [
   {
     category: "Languages",
-    skills: ["C++", "Java", "Python", "JavaScript", "TypeScript"],
+    skills: ["C++", "Java", "Python", "JavaScript"],
   },
   {
     category: "Frontend",
-    skills: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
+    skills: ["React.js", "HTML5", "CSS3"],
   },
   {
     category: "Backend",
@@ -50,7 +50,7 @@ export const skillCategories = [
   },
   {
     category: "Databases",
-    skills: ["MongoDB", "MySQL", "ChromaDB", "PostgreSQL"],
+    skills: ["MongoDB", "MySQL", "ChromaDB", "PostgreSQL", "Redis"],
   },
   {
     category: "Cloud & DevOps",
@@ -58,7 +58,7 @@ export const skillCategories = [
   },
   {
     category: "AI / ML",
-    skills: ["LangChain", "LangGraph", "RAG", "LLMs", "YOLOv8", "OpenCV", "XGBoost", "SMOTE", "PCA", "OpenRouter", "Fine-tuning"],
+    skills: ["LangChain", "LangGraph", "RAG", "LLMs", "Gemini API"],
   },
 ];
 
@@ -91,7 +91,7 @@ export type Project = {
   subtitle: string;
   description: string;
   tech: string[];
-  visualType: "neural-network" | "cctv-feed" | "websocket-lines" | "chart" | "agent-graph";
+  visualType: "neural-network" | "cctv-feed" | "websocket-lines" | "chart" | "calendar";
   architectureNodes: ArchNode[];
   architectureEdges: ArchEdge[];
   metrics: { label: string; value: string }[];
@@ -223,25 +223,29 @@ export const projects: Project[] = [
   {
     id: "recallhub",
     title: "RecallHub",
-    subtitle: "Smart Recall & Note Management",
+    subtitle: "DSA Problem Tracker",
     description:
-      "A full-stack recall and note management application that lets users capture, organize, and revisit knowledge efficiently. Built with a React frontend and Node.js backend, featuring structured note storage, fast retrieval, and a clean productivity-focused UI.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "JavaScript", "CSS3"],
-    visualType: "websocket-lines",
+      "A full-stack DSA problem tracker that lets you log problems you solve each day and revisit them for revision. Features a calendar view where each date shows the problems solved that day — click any date to review your solutions. Powered by Gemini API + RAG + LangGraph for AI-assisted revision chat, with Redis for persistent chat history.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Gemini API", "RAG", "LangGraph", "Redis"],
+    visualType: "calendar",
     architectureNodes: [
-      { id: "ui", label: "React UI", description: "Note capture and browsing interface", x: 50, y: 15 },
-      { id: "api", label: "Node API", description: "Express REST backend", x: 50, y: 45 },
-      { id: "db", label: "MongoDB", description: "Persistent note storage", x: 50, y: 75 },
+      { id: "ui", label: "React UI", description: "Calendar + problem log interface", x: 50, y: 15 },
+      { id: "api", label: "Node API", description: "Express REST backend", x: 50, y: 40 },
+      { id: "db", label: "MongoDB", description: "Problem storage", x: 20, y: 65 },
+      { id: "redis", label: "Redis", description: "Chat history", x: 50, y: 65 },
+      { id: "gemini", label: "Gemini API", description: "RAG + LangGraph revision chat", x: 80, y: 65 },
     ],
     architectureEdges: [
       { from: "ui", to: "api" },
       { from: "api", to: "db" },
+      { from: "api", to: "redis" },
+      { from: "api", to: "gemini" },
     ],
     metrics: [
-      { label: "Stack", value: "MERN" },
-      { label: "Storage", value: "MongoDB" },
-      { label: "UI", value: "React" },
-      { label: "API", value: "REST" },
+      { label: "AI", value: "Gemini" },
+      { label: "Memory", value: "Redis" },
+      { label: "Pipeline", value: "RAG" },
+      { label: "Agents", value: "LangGraph" },
     ],
     github: "https://github.com/laeeq-ahmd/RecallHub",
     status: "ONLINE",
@@ -369,9 +373,8 @@ export const terminalCommands: Record<string, string> = {
   about          - print identity
   skills         - list technical skills
   projects       - list all projects
-  careerx        - open CareerX AI details
-  smartfire      - open SmartFirePredict details
   experience     - view experience timeline
+  education      - view education
   resume         - download resume PDF
   github         - open GitHub profile
   leetcode       - open LeetCode profile
@@ -381,7 +384,6 @@ export const terminalCommands: Record<string, string> = {
   theme cyberpunk- neon pink + yellow theme
   clear          - clear terminal history
   neofetch       - print system info
-  cat hobbies.txt- [hidden] personal interests
   sudo hire laeeq- [hidden] ...`,
 
   about: `guest@laeeq:~$ whoami
@@ -393,38 +395,27 @@ Focus:    Building AI Systems`,
 
   skills: `{
   "languages":   ["C++", "Java", "Python", "JavaScript"],
-  "frontend":    ["React.js", "Next.js", "HTML5", "CSS3"],
+  "frontend":    ["React.js", "HTML5", "CSS3"],
   "backend":     ["FastAPI", "Node.js", "Express.js"],
-  "databases":   ["MongoDB", "MySQL", "ChromaDB"],
+  "databases":   ["MongoDB", "MySQL", "ChromaDB", "Redis"],
   "cloud":       ["AWS", "Kubernetes", "Docker"],
-  "ai_ml":       ["LangChain", "LangGraph", "RAG", "LLMs", "YOLOv8", "XGBoost"]
+  "ai_ml":       ["LangChain", "LangGraph", "RAG", "LLMs", "Gemini API"]
 }`,
 
-  projects: `Active mission modules:
-  [1] CareerX AI        - AI Career Platform       [OPERATIONAL]
-  [2] SmartFirePredict  - AI + IoT Fire Detection  [MONITORING]
-  [3] Tic-Tac-Toe Plus  - Real-time Multiplayer    [ONLINE]
-  [4] Finance Dashboard - Data Visualization UI    [ONLINE]
-  [5] Summer of AI      - VisWAM AI Internship     [ONLINE]`,
-
-  careerx: `MISSION MODULE: CareerX AI
-  Stack: React, Node.js, MongoDB, ChromaDB, Docker, Kubernetes, LangChain
-  RAG Accuracy:  87%
-  Response Time: < 1.2s
-  GitHub: https://github.com/laeeq-ahmd/`,
-
-  smartfire: `MISSION MODULE: SmartFirePredict
-  Stack: Python, FastAPI, YOLOv8, OpenCV, ESP32, AWS
-  Detection:   94.2% accuracy
-  Alert Time:  < 3s
-  GitHub: https://github.com/laeeq-ahmd/`,
+  projects: `Active repos:
+  [1] Tic-Tac-Toe Plus  - Real-time Multiplayer    [ONLINE]
+  [2] Finance Dashboard - Data Visualization UI    [ONLINE]
+  [3] RecallHub         - DSA Problem Tracker      [ONLINE]
+  → github.com/laeeq-ahmd`,
 
   experience: `Experience Timeline:
-  [2025] AI Developer Intern — VisWAM AI (Summer of AI)
-  [2024] AI/ML Intern — Infosys Springboard
-  [2024] Global Rank 1130 — TCS CodeVita Season 13
-  [2024] First Runner-Up — Sprint Hackathon
-  [2024] Oracle Developer Professional — Certification`,
+  [2025] AI Developer Intern — VisWAM AI (SoAI 2025)
+  [2024] AI/ML Intern — Infosys Springboard`,
+
+  education: `Education:
+  [2022-2026] B.E. Computer Science — Matrushri Engineering College  CGPA: 8.23
+  [2022]      Class XII — MS Junior College                          Score: 96.6%
+  [2020]      Class X  — MS Creative School                         CGPA: 10/10`,
 
   resume: `Initiating download: resume.pdf
   [##########] 100%
@@ -432,7 +423,7 @@ Focus:    Building AI Systems`,
 
   github: "Opening: https://github.com/laeeq-ahmd/",
   leetcode: "Opening: https://leetcode.com/u/Laeeq-Ahmed/",
-  contact: "Jumping to: #contact",
+  contact: "Navigating to contact — closing terminal...",
 
   neofetch: `
          ██████████        guest@laeeq
@@ -440,15 +431,12 @@ Focus:    Building AI Systems`,
        ████  ████  ████    OS:       Mission Control v3.0
        ████  ████  ████    Kernel:   React 19
        ████        ████    Uptime:   Building since 2022
-        ████      ████     Shell:    TypeScript 5.x
-         ██████████        DE:       Next.js App Router
+        ████      ████     Shell:    JavaScript
+         ██████████        DE:       React App Router
                            Terminal: JetBrains Mono
                            CPU:      Software Engineer
                            AI:       LangChain + LangGraph
                            Memory:   Too many side projects`,
-
-  "cat hobbies.txt": `Writing One Piece inspired light novels
-and reading Urdu literature.`,
 
   "sudo hire laeeq": `[sudo] password for recruiter: ********
 Verifying credentials...
@@ -463,10 +451,10 @@ Welcome aboard.`,
 export const commandPaletteItems = [
   { label: "resume", description: "Download PDF resume", action: "download-resume" },
   { label: "projects", description: "Jump to Projects section", action: "navigate-projects" },
-  { label: "careerx", description: "Open CareerX AI details", action: "open-careerx" },
-  { label: "smartfire", description: "Open SmartFirePredict details", action: "open-smartfire" },
+  { label: "experience", description: "Jump to Experience section", action: "navigate-experience" },
+  { label: "education", description: "Jump to Education section", action: "navigate-education" },
+  { label: "achievements", description: "Jump to Achievements section", action: "navigate-achievements" },
+  { label: "contact", description: "Jump to Contact section", action: "navigate-contact" },
   { label: "github", description: "Open GitHub profile", action: "open-github" },
   { label: "leetcode", description: "Open LeetCode profile", action: "open-leetcode" },
-  { label: "contact", description: "Jump to Contact section", action: "navigate-contact" },
-  { label: "experience", description: "Jump to Experience section", action: "navigate-experience" },
 ];

@@ -9,7 +9,7 @@ export type HistoryEntry = {
 
 export type TerminalTheme = "default" | "matrix" | "cyberpunk";
 
-export function useTerminal() {
+export function useTerminal(onClose?: () => void) {
   const [history, setHistory] = useState<HistoryEntry[]>([
     { type: "output", text: 'Mission Control Terminal v3.0 — type "help" for commands.' },
   ]);
@@ -76,7 +76,13 @@ export function useTerminal() {
           ...prev,
           { type: "output", text: terminalCommands.contact },
         ]);
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        // Close terminal first, then scroll after a short delay so section is visible
+        setTimeout(() => {
+          onClose?.();
+          setTimeout(() => {
+            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+          }, 300);
+        }, 400);
         return;
       }
 
@@ -86,6 +92,15 @@ export function useTerminal() {
           { type: "output", text: terminalCommands.experience },
         ]);
         document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      if (input === "education") {
+        setHistory((prev) => [
+          ...prev,
+          { type: "output", text: terminalCommands.education },
+        ]);
+        document.getElementById("education")?.scrollIntoView({ behavior: "smooth" });
         return;
       }
 
@@ -99,7 +114,7 @@ export function useTerminal() {
         ]);
       }
     },
-    []
+    [onClose]
   );
 
   return { history, execute, theme };

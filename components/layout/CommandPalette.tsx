@@ -30,25 +30,25 @@ export default function CommandPalette() {
         window.open("/resume.pdf", "_blank");
         break;
       case "navigate-projects":
-        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }), 150);
         break;
       case "navigate-contact":
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 150);
         break;
       case "navigate-experience":
-        document.getElementById("logs")?.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" }), 150);
+        break;
+      case "navigate-education":
+        setTimeout(() => document.getElementById("education")?.scrollIntoView({ behavior: "smooth" }), 150);
+        break;
+      case "navigate-achievements":
+        setTimeout(() => document.getElementById("achievements")?.scrollIntoView({ behavior: "smooth" }), 150);
         break;
       case "open-github":
         window.open(identity.profiles[0].url, "_blank");
         break;
       case "open-leetcode":
         window.open(identity.profiles[1].url, "_blank");
-        break;
-      case "open-careerx":
-        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-        break;
-      case "open-smartfire":
-        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
         break;
     }
   };

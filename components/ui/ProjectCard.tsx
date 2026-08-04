@@ -126,42 +126,41 @@ function ChartVisual() {
   );
 }
 
-function AgentGraphVisual() {
-  const nodes = [
-    { x: 50, y: 15, label: "INPUT", color: "#06b6d4" },
-    { x: 50, y: 40, label: "LangChain", color: "#8b5cf6" },
-    { x: 50, y: 65, label: "LangGraph", color: "#3b82f6" },
-    { x: 25, y: 85, label: "LLM", color: "#22c55e" },
-    { x: 75, y: 85, label: "OUTPUT", color: "#f59e0b" },
-  ];
-  const edges = [[0,1],[1,2],[2,3],[2,4]];
+function CalendarVisual() {
+  // Simulate a 5x7 calendar grid — some dates have solved problems
+  const days = Array.from({ length: 35 }, (_, i) => ({
+    solved: [2, 3, 5, 7, 8, 10, 14, 15, 16, 20, 21, 22, 23, 28, 29, 34].includes(i),
+    active: i === 29,
+    count: [3, 5, 7, 8, 10, 14, 15, 16, 20, 21, 22, 23, 28, 29].includes(i)
+      ? Math.floor(Math.random() * 4) + 1
+      : 0,
+  }));
   return (
-    <div className="relative w-full h-full">
-      <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-        {edges.map(([a, b], i) => (
-          <motion.line
+    <div className="relative w-full h-full flex flex-col gap-1 p-2">
+      <div className="grid grid-cols-7 gap-1 flex-1">
+        {days.map((day, i) => (
+          <motion.div
             key={i}
-            x1={`${nodes[a].x}%`} y1={`${nodes[a].y}%`}
-            x2={`${nodes[b].x}%`} y2={`${nodes[b].y}%`}
-            stroke="#8b5cf6" strokeWidth="0.6" strokeOpacity="0.5"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: [0, 1, 0] }}
-            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+            className="rounded-sm"
+            style={{
+              background: day.active
+                ? "#06b6d4"
+                : day.solved
+                ? `rgba(6,182,212,${0.15 + (day.count * 0.2)})`
+                : "#1a1a1a",
+              border: day.active ? "1px solid #06b6d4" : "1px solid #222",
+            }}
+            animate={day.active ? { opacity: [0.7, 1, 0.7] } : {}}
+            transition={{ duration: 1.5, repeat: Infinity }}
           />
         ))}
-        {nodes.map((node, i) => (
-          <motion.circle
-            key={i}
-            cx={`${node.x}%`} cy={`${node.y}%`} r="3.5"
-            fill={node.color}
-            animate={{ r: [3.5, 5, 3.5], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.3 }}
-          />
-        ))}
-      </svg>
-      <div className="absolute bottom-1 left-0 right-0 text-center">
-        <span className="text-[10px] text-[#52525b]" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-          AGENT PIPELINE
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="text-[9px] text-[#52525b]" style={{ fontFamily: "JetBrains Mono, monospace" }}>
+          DSA TRACKER
+        </span>
+        <span className="text-[9px]" style={{ color: "#06b6d4", fontFamily: "JetBrains Mono, monospace" }}>
+          TODAY: 3 solved
         </span>
       </div>
     </div>
@@ -173,7 +172,7 @@ const visualMap = {
   "cctv-feed": CCTVVisual,
   "websocket-lines": WebSocketVisual,
   chart: ChartVisual,
-  "agent-graph": AgentGraphVisual,
+  "calendar": CalendarVisual,
 };
 
 // ─── Status badge colors ───────────────────────────────────────────────────────
