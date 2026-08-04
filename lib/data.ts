@@ -3,7 +3,7 @@
 export const identity = {
   name: "Laeeq Ahmed",
   taglines: ["Software Engineer", "AI Engineer", "Full Stack Developer"],
-  location: "Pakistan",
+  location: "India",
   bio: "Building AI-powered systems, cloud-native backends, and full-stack products that solve real problems.",
   profiles: [
     { label: "github", url: "https://github.com/laeeq-ahmd/", command: "Execute: github" },
@@ -348,7 +348,7 @@ export const terminalCommands: Record<string, string> = {
 
 Name:     Laeeq Ahmed
 Role:     Software Engineer | AI Engineer | Full Stack Developer
-Location: Pakistan
+Location: India
 Focus:    Building AI Systems`,
 
   skills: `{

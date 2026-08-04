@@ -131,7 +131,7 @@ export default function Hero() {
                       {identity.bio}
                     </p>
                     <p className="text-xs" style={{ color: "var(--color-muted)" }}>
-                      LAT 33.68 N &nbsp;|&nbsp; LON 73.04 E &nbsp;|&nbsp; Pakistan
+                      LAT 33.68 N &nbsp;|&nbsp; LON 73.04 E &nbsp;|&nbsp; India
                     </p>
                   </motion.div>
                 )}
