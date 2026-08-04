@@ -1,0 +1,22 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function lerp(start: number, end: number, t: number): number {
+  return start * (1 - t) + end * t;
+}
+
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}
+
+export function randomBetween(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
+}
+
+export function formatNumber(n: number): string {
+  return n.toLocaleString();
+}

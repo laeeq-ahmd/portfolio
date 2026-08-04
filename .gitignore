@@ -1,0 +1,47 @@
+# ─── Dependencies ─────────────────────────────────────────────────────────────
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ─── Next.js ──────────────────────────────────────────────────────────────────
+/.next/
+/out/
+/build
+
+# ─── Testing ──────────────────────────────────────────────────────────────────
+/coverage
+
+# ─── Environment Variables ────────────────────────────────────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ─── Vercel ───────────────────────────────────────────────────────────────────
+.vercel
+
+# ─── TypeScript ───────────────────────────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Debug Logs ───────────────────────────────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.pem
+
+# ─── Agent / AI assistant files (not for public repo) ─────────────────────────
+AGENTS.md
+CLAUDE.md
+.agents/
