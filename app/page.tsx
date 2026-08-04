@@ -15,6 +15,7 @@ import Education from "@/components/sections/Education";
 import Achievements from "@/components/sections/Achievements";
 import Contact from "@/components/sections/Contact";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import Marquee from "@/components/ui/Marquee";
 
 // ─── Dynamic imports (heavy — overlays only) ───────────────────────────────────
 const LoadingScreen = dynamic(
@@ -72,6 +73,14 @@ export default function Home() {
         <section id="projects">
           <Projects />
         </section>
+
+        {/* Section divider marquee */}
+        <Marquee
+          items={["Available for Work", "AI Engineer", "Full Stack Dev", "India", "Open Source", "Building in Public"]}
+          variant="green"
+          speed={18}
+          reverse
+        />
 
         {/* Experience */}
         <section id="experience">

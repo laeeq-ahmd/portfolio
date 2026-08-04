@@ -21,7 +21,7 @@ export default function Achievements() {
       >
         <p className="section-label">ACHIEVEMENTS.txt</p>
         <h2
-          className="text-4xl font-bold text-[#f0f0f0]"
+          className="text-5xl font-black text-[#f0f0f0] mt-2"
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
         >
           Achievements

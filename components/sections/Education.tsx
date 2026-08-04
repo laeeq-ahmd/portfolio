@@ -12,9 +12,9 @@ export default function Education() {
         viewport={{ once: true }}
         className="mb-10"
       >
-        <p className="section-label">EDUCATION.log</p>
+        <p className="section-label section-label-green">EDUCATION.log</p>
         <h2
-          className="text-4xl font-bold text-[#f0f0f0]"
+          className="text-5xl font-black text-[#f0f0f0] mt-2"
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
         >
           Education

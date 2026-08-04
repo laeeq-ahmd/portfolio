@@ -17,10 +17,11 @@ export default function Projects() {
         viewport={{ once: true }}
         className="mb-12"
       >
-        <p className="text-xs text-[#06b6d4] tracking-widest mb-2" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-          ls -la ./mission_modules/
-        </p>
-        <h2 className="text-3xl font-semibold text-[#e4e4e7]" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+        <p className="section-label section-label-cyan">PROJECTS.log</p>
+        <h2
+          className="text-5xl font-black text-[#f0f0f0] mt-2"
+          style={{ fontFamily: "Space Grotesk, sans-serif" }}
+        >
           Projects
         </h2>
       </motion.div>

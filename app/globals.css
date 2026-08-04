@@ -4,11 +4,13 @@
 :root {
   --color-bg: #0a0a0a;
   --color-surface: #111111;
-  --color-border: #06b6d4;
-  --color-border-dim: #1a1a1a;
+  --color-border: #FFE500;
+  --color-border-dim: #222222;
+  --color-yellow: #FFE500;
   --color-cyan: #06b6d4;
   --color-blue: #3b82f6;
-  --color-green: #22c55e;
+  --color-green: #39FF14;
+  --color-pink: #FF2D78;
   --color-purple: #8b5cf6;
   --color-amber: #f59e0b;
   --color-text: #f0f0f0;
@@ -17,11 +19,12 @@
   --font-heading: var(--font-space-grotesk, "Space Grotesk", sans-serif);
   --font-mono: var(--font-jetbrains-mono, "JetBrains Mono", monospace);
 
-  /* Neubrutalism shadow tokens */
-  --shadow-nb: 3px 3px 0px var(--color-cyan);
-  --shadow-nb-green: 3px 3px 0px var(--color-green);
-  --shadow-nb-amber: 3px 3px 0px var(--color-amber);
-  --shadow-nb-purple: 3px 3px 0px var(--color-purple);
+  /* Neubrutalism shadow tokens — bigger, bolder, yellow */
+  --shadow-nb:        5px 5px 0px #FFE500;
+  --shadow-nb-green:  5px 5px 0px #39FF14;
+  --shadow-nb-pink:   5px 5px 0px #FF2D78;
+  --shadow-nb-cyan:   5px 5px 0px #06b6d4;
+  --shadow-nb-white:  5px 5px 0px #ffffff;
 }
 
 /* ─── Theme Overrides ─────────────────────────────────────────────────────── */
@@ -30,7 +33,7 @@
   --color-border: #22c55e;
   --color-text: #bbf7d0;
   --color-muted: #4ade80;
-  --shadow-nb: 3px 3px 0px #22c55e;
+  --shadow-nb: 5px 5px 0px #22c55e;
 }
 
 [data-theme="cyberpunk"] {
@@ -39,7 +42,7 @@
   --color-blue: #fbbf24;
   --color-text: #fce7f3;
   --color-muted: #c084fc;
-  --shadow-nb: 3px 3px 0px #f0abfc;
+  --shadow-nb: 5px 5px 0px #f0abfc;
 }
 
 /* ─── Base Reset ──────────────────────────────────────────────────────────── */
@@ -71,9 +74,9 @@ body {
 }
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--color-bg); }
-::-webkit-scrollbar-thumb { background: var(--color-cyan); }
+::-webkit-scrollbar-thumb { background: var(--color-yellow); }
 
 /* ─── Typography ──────────────────────────────────────────────────────────── */
 .font-mono    { font-family: var(--font-mono) !important; }
@@ -93,17 +96,54 @@ body {
 .cursor-blink  { animation: blink 1s step-end infinite; }
 .status-dot    { animation: status-pulse 2s ease-in-out infinite; }
 
+/* ─── Marquee ─────────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* ─── Text Reveal (clip-path) ─────────────────────────────────────────────── */
+.reveal-up {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up.in-view {
+  clip-path: inset(0 0 0 0);
+}
+
 /* ─── Neubrutalism Terminal Window ────────────────────────────────────────── */
 .terminal-window {
   background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  box-shadow: var(--shadow-nb);
+  border: 2px solid #333;
+  box-shadow: var(--shadow-nb-cyan);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .terminal-window:hover {
-  box-shadow: 5px 5px 0px var(--color-cyan);
-  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0px #06b6d4;
+  transform: translate(-2px, -2px);
 }
 
 .terminal-titlebar {
@@ -111,8 +151,8 @@ body {
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  border-bottom: 2px solid var(--color-border);
-  background: rgba(6, 182, 212, 0.05);
+  border-bottom: 2px solid #222;
+  background: rgba(6, 182, 212, 0.04);
 }
 
 .traffic-dot {
@@ -121,52 +161,66 @@ body {
   border-radius: 50%;
 }
 
-/* ─── Neubrutalism Card ───────────────────────────────────────────────────── */
+/* ─── Neubrutalism Card — Yellow Primary ─────────────────────────────────── */
 .nb-card {
   background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--color-yellow);
   box-shadow: var(--shadow-nb);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  transition: box-shadow 0.12s ease, transform 0.12s ease;
 }
 
 .nb-card:hover {
-  box-shadow: 5px 5px 0px var(--color-cyan);
-  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0px var(--color-yellow);
+  transform: translate(-2px, -2px);
 }
 
+/* Color variants */
 .nb-card-green {
   border-color: var(--color-green);
   box-shadow: var(--shadow-nb-green);
 }
-
 .nb-card-green:hover {
-  box-shadow: 5px 5px 0px var(--color-green);
+  box-shadow: 7px 7px 0px var(--color-green);
+}
+
+.nb-card-pink {
+  border-color: var(--color-pink);
+  box-shadow: var(--shadow-nb-pink);
+}
+.nb-card-pink:hover {
+  box-shadow: 7px 7px 0px var(--color-pink);
+}
+
+.nb-card-cyan {
+  border-color: var(--color-cyan);
+  box-shadow: var(--shadow-nb-cyan);
+}
+.nb-card-cyan:hover {
+  box-shadow: 7px 7px 0px var(--color-cyan);
 }
 
 .nb-card-amber {
   border-color: var(--color-amber);
-  box-shadow: var(--shadow-nb-amber);
-}
-
-.nb-card-amber:hover {
   box-shadow: 5px 5px 0px var(--color-amber);
+}
+.nb-card-amber:hover {
+  box-shadow: 7px 7px 0px var(--color-amber);
 }
 
 .nb-card-purple {
   border-color: var(--color-purple);
-  box-shadow: var(--shadow-nb-purple);
-}
-
-.nb-card-purple:hover {
   box-shadow: 5px 5px 0px var(--color-purple);
+}
+.nb-card-purple:hover {
+  box-shadow: 7px 7px 0px var(--color-purple);
 }
 
 /* ─── Neubrutalism Button ─────────────────────────────────────────────────── */
 .nb-btn {
   background: transparent;
-  border: 2px solid var(--color-cyan);
-  box-shadow: 3px 3px 0px var(--color-cyan);
-  color: var(--color-cyan);
+  border: 2px solid var(--color-yellow);
+  box-shadow: 4px 4px 0px var(--color-yellow);
+  color: var(--color-yellow);
   font-family: var(--font-mono);
   font-size: 12px;
   padding: 8px 16px;
@@ -174,21 +228,40 @@ body {
   transition: box-shadow 0.1s, transform 0.1s;
   display: inline-block;
   letter-spacing: 0.05em;
+  font-weight: 700;
 }
 
 .nb-btn:hover {
   box-shadow: none;
-  transform: translate(3px, 3px);
+  transform: translate(4px, 4px);
 }
 
-/* ─── Section label (top monospace) ──────────────────────────────────────── */
+/* ─── Section Label — Solid Fill Block ───────────────────────────────────── */
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-cyan);
-  letter-spacing: 0.2em;
+  color: #000;
+  background: var(--color-yellow);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 3px 10px;
+  display: inline-block;
+  font-weight: 800;
+}
+
+/* ─── Section Label color variants ───────────────────────────────────────── */
+.section-label-pink {
+  background: var(--color-pink);
+  color: #fff;
+}
+.section-label-green {
+  background: var(--color-green);
+  color: #000;
+}
+.section-label-cyan {
+  background: var(--color-cyan);
+  color: #000;
 }
 
 /* ─── Horizontal rule neubrutalism style ─────────────────────────────────── */
@@ -197,6 +270,33 @@ body {
   border-top: 2px solid var(--color-border-dim);
   margin: 3rem 0;
 }
+
+/* ─── Skill Chip — Solid Fill ────────────────────────────────────────────── */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border: 2px solid currentColor;
+  box-shadow: 3px 3px 0px currentColor;
+  transition: box-shadow 0.1s, transform 0.1s;
+  letter-spacing: 0.04em;
+  cursor: default;
+}
+
+.skill-chip:hover {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+/* Chip color classes */
+.chip-yellow { color: #000; background: var(--color-yellow); border-color: var(--color-yellow); }
+.chip-green  { color: #000; background: var(--color-green);  border-color: var(--color-green); }
+.chip-pink   { color: #fff; background: var(--color-pink);   border-color: var(--color-pink); }
+.chip-cyan   { color: #000; background: var(--color-cyan);   border-color: var(--color-cyan); }
+.chip-white  { color: #000; background: #f0f0f0;             border-color: #f0f0f0; }
 
 /* ─── Scanline Overlay ────────────────────────────────────────────────────── */
 .scanline-overlay::after {
@@ -207,8 +307,8 @@ body {
     to bottom,
     transparent 0px,
     transparent 3px,
-    rgba(0, 0, 0, 0.06) 3px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0, 0, 0, 0.04) 3px,
+    rgba(0, 0, 0, 0.04) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -219,8 +319,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: var(--color-cyan);
+  height: 4px;
+  background: var(--color-yellow);
   z-index: 9999;
   transform-origin: left;
   pointer-events: none;
@@ -237,45 +337,23 @@ body {
   .section-container { padding: 3.5rem 1.25rem; }
 }
 
-/* ─── Arch Node ───────────────────────────────────────────────────────────── */
-.arch-node {
-  border: 2px solid var(--color-border-dim);
-  background: var(--color-surface);
-  box-shadow: 2px 2px 0px var(--color-border-dim);
-  padding: 6px 12px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text);
-  transition: border-color 0.15s, box-shadow 0.15s, color 0.15s, transform 0.15s;
-  cursor: pointer;
-}
-
-.arch-node:hover,
-.arch-node.active {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
-  box-shadow: 3px 3px 0px var(--color-cyan);
-  transform: translate(-1px, -1px);
-}
-
-/* ─── Tech Badge ──────────────────────────────────────────────────────────── */
+/* ─── Tech Badge (legacy, kept for terminal card) ─────────────────────────── */
 .tech-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   border: 2px solid var(--color-border-dim);
   padding: 3px 8px;
   font-family: var(--font-mono);
   font-size: 11px;
   background: var(--color-surface);
   color: var(--color-muted);
-  transition: border-color 0.15s, color 0.15s, box-shadow 0.15s, transform 0.15s;
+  transition: border-color 0.12s, color 0.12s, box-shadow 0.12s, transform 0.12s;
 }
 
 .tech-badge:hover {
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
-  box-shadow: 2px 2px 0px var(--color-cyan);
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+  box-shadow: 3px 3px 0px var(--color-yellow);
   transform: translate(-1px, -1px);
 }
 
@@ -289,6 +367,37 @@ body {
 
 /* ─── Selection ───────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(6, 182, 212, 0.25);
+  background: rgba(255, 229, 0, 0.25);
   color: var(--color-text);
+}
+
+/* ─── Bold number counters ────────────────────────────────────────────────── */
+.nb-number {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-yellow);
+}
+
+/* ─── Stripe flash on heading entry ──────────────────────────────────────── */
+@keyframes stripe-reveal {
+  0%   { transform: scaleX(0); transform-origin: left; }
+  50%  { transform: scaleX(1); transform-origin: left; }
+  50.01% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+.stripe-reveal {
+  position: relative;
+  display: inline-block;
+}
+
+.stripe-reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-yellow);
+  z-index: 1;
+  animation: stripe-reveal 0.7s cubic-bezier(0.77, 0, 0.18, 1) both;
 }

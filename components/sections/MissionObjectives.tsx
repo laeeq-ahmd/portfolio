@@ -2,82 +2,89 @@
 import { motion } from "framer-motion";
 import { missionObjectives } from "@/lib/data";
 
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, x: -20 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-};
-
 export default function MissionObjectives() {
   return (
     <section className="section-container" style={{ zIndex: 1, position: "relative" }}>
-      <div className="max-w-2xl">
+      <div className="max-w-3xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-10"
         >
-          <p className="text-xs text-[#06b6d4] tracking-widest mb-2" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-            MISSION_OBJECTIVES.txt
-          </p>
-          <h2 className="text-3xl font-semibold text-[#e4e4e7]" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
-            Mission Objectives
+          <p className="section-label section-label-green">ABOUT.md</p>
+          <h2
+            className="text-5xl font-black text-[#f0f0f0] mt-2"
+            style={{ fontFamily: "Space Grotesk, sans-serif" }}
+          >
+            About Me
           </h2>
         </motion.div>
 
-        {/* Objectives list */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-3"
-          style={{ fontFamily: "JetBrains Mono, monospace" }}
-        >
+        {/* Objectives as bold bordered cards */}
+        <div className="space-y-4">
           {missionObjectives.map((obj, i) => (
             <motion.div
               key={i}
-              variants={item}
-              className="flex items-center gap-4"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.08, type: "spring", stiffness: 300, damping: 24 }}
+              className={`nb-card p-4 flex items-center gap-5 ${obj.completed ? "" : "opacity-50"}`}
+              style={
+                obj.completed
+                  ? {}
+                  : { borderColor: "#333", boxShadow: "5px 5px 0px #333" }
+              }
             >
-              {/* Checkbox */}
-              <motion.span
-                className="text-sm shrink-0"
-                style={{ color: obj.completed ? "#22c55e" : "#52525b" }}
-                animate={
-                  obj.completed
-                    ? { textShadow: ["0 0 8px #22c55e80", "0 0 16px #22c55e60", "0 0 8px #22c55e80"] }
-                    : {}
-                }
-                transition={{ duration: 2, repeat: Infinity }}
+              {/* Index number */}
+              <span
+                className="text-2xl font-black shrink-0 w-10 text-center"
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: obj.completed ? "#FFE500" : "#333",
+                }}
               >
-                {obj.completed ? "[x]" : "[ ]"}
-              </motion.span>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              {/* Divider */}
+              <div
+                className="w-0.5 self-stretch shrink-0"
+                style={{ background: obj.completed ? "#FFE500" : "#333" }}
+              />
 
               {/* Text */}
               <span
-                className="text-sm"
-                style={{ color: obj.completed ? "#e4e4e7" : "#52525b" }}
+                className="text-sm leading-relaxed"
+                style={{
+                  fontFamily: "JetBrains Mono, monospace",
+                  color: obj.completed ? "#f0f0f0" : "#555",
+                }}
               >
                 {obj.text}
               </span>
 
-              {/* Completed marker */}
+              {/* DONE badge */}
               {obj.completed && (
-                <span className="text-xs text-[#22c55e] ml-auto shrink-0">COMPLETE</span>
+                <span
+                  className="ml-auto shrink-0 text-[10px] font-black px-2 py-1 tracking-widest"
+                  style={{
+                    fontFamily: "JetBrains Mono, monospace",
+                    background: "#39FF14",
+                    color: "#000",
+                    border: "2px solid #39FF14",
+                    boxShadow: "2px 2px 0 #000",
+                  }}
+                >
+                  DONE
+                </span>
               )}
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
