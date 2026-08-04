@@ -11,6 +11,7 @@ import MissionObjectives from "@/components/sections/MissionObjectives";
 import Systems from "@/components/sections/Systems";
 import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
+import Education from "@/components/sections/Education";
 import Achievements from "@/components/sections/Achievements";
 import Contact from "@/components/sections/Contact";
 import ScrollProgress from "@/components/ui/ScrollProgress";
@@ -30,12 +31,6 @@ const CommandPalette = dynamic(
 );
 const CustomCursor = dynamic(
   () => import("@/components/layout/CustomCursor"),
-  { ssr: false }
-);
-
-// Architecture — heavy, keep dynamic
-const Architecture = dynamic(
-  () => import("@/components/sections/Architecture"),
   { ssr: false }
 );
 
@@ -73,13 +68,6 @@ export default function Home() {
           <Systems />
         </section>
 
-        {/* Architecture diagrams */}
-        <section id="architecture">
-          <Suspense fallback={<div className="h-96" />}>
-            <Architecture />
-          </Suspense>
-        </section>
-
         {/* Projects */}
         <section id="projects">
           <Projects />
@@ -88,6 +76,11 @@ export default function Home() {
         {/* Experience */}
         <section id="experience">
           <Experience />
+        </section>
+
+        {/* Education */}
+        <section id="education">
+          <Education />
         </section>
 
         {/* Achievements */}

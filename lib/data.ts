@@ -221,33 +221,29 @@ export const projects: Project[] = [
     status: "ONLINE",
   },
   {
-    id: "viswam-ai",
-    title: "Summer of AI — VisWAM",
-    subtitle: "AI Model Development",
+    id: "recallhub",
+    title: "RecallHub",
+    subtitle: "Smart Recall & Note Management",
     description:
-      "AI Developer role during the Summer of AI 2025 program at VisWAM AI (Swetha.IT). Built and fine-tuned AI models for accuracy and real-world effectiveness using structured workflows. Gained hands-on experience with Python, collaborative software development, and advanced AI engineering practices.",
-    tech: ["Python", "LangChain", "LangGraph", "LLMs", "Fine-tuning", "DevOps", "Collaborative Dev"],
-    visualType: "agent-graph",
+      "A full-stack recall and note management application that lets users capture, organize, and revisit knowledge efficiently. Built with a React frontend and Node.js backend, featuring structured note storage, fast retrieval, and a clean productivity-focused UI.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "JavaScript", "CSS3"],
+    visualType: "websocket-lines",
     architectureNodes: [
-      { id: "input", label: "Input", description: "Structured data and prompts", x: 50, y: 10 },
-      { id: "langchain", label: "LangChain", description: "LLM orchestration framework", x: 50, y: 30 },
-      { id: "langgraph", label: "LangGraph", description: "Stateful multi-agent graph", x: 50, y: 50 },
-      { id: "llm", label: "LLM", description: "Fine-tuned language model", x: 30, y: 70 },
-      { id: "output", label: "Output", description: "Evaluated model results", x: 70, y: 70 },
+      { id: "ui", label: "React UI", description: "Note capture and browsing interface", x: 50, y: 15 },
+      { id: "api", label: "Node API", description: "Express REST backend", x: 50, y: 45 },
+      { id: "db", label: "MongoDB", description: "Persistent note storage", x: 50, y: 75 },
     ],
     architectureEdges: [
-      { from: "input", to: "langchain" },
-      { from: "langchain", to: "langgraph" },
-      { from: "langgraph", to: "llm" },
-      { from: "langgraph", to: "output" },
+      { from: "ui", to: "api" },
+      { from: "api", to: "db" },
     ],
     metrics: [
-      { label: "Framework", value: "LangChain" },
-      { label: "Agents", value: "LangGraph" },
-      { label: "Mode", value: "In-Person" },
-      { label: "Program", value: "SoAI 2025" },
+      { label: "Stack", value: "MERN" },
+      { label: "Storage", value: "MongoDB" },
+      { label: "UI", value: "React" },
+      { label: "API", value: "REST" },
     ],
-    github: "https://github.com/laeeq-ahmd/",
+    github: "https://github.com/laeeq-ahmd/RecallHub",
     status: "ONLINE",
   },
 ];
@@ -304,9 +300,53 @@ export const achievements = [
   },
   {
     label: "Oracle Developer Professional",
-    context: "Certification",
-    description: "Earned the Oracle Developer Professional certification demonstrating proficiency in Oracle technologies.",
-    certLink: "",
+    context: "Oracle Certification",
+    description: "Earned the Oracle Developer Professional certification demonstrating proficiency in Oracle development.",
+    certLink: "https://drive.google.com/file/d/1EQHO-i1DxxN1o47x0x_HEjYwT9OT8Vj4/view?usp=sharing",
+  },
+  {
+    label: "Oracle Generative AI Professional",
+    context: "Oracle Certification",
+    description: "Certified in Oracle Generative AI, covering LLM fundamentals, prompt engineering, and AI application development.",
+    certLink: "https://drive.google.com/file/d/12StWrgHuQvH8hFpbxwXZuYLrr1fMMM2q/view?usp=sharing",
+  },
+  {
+    label: "Oracle Data Science Professional",
+    context: "Oracle Certification",
+    description: "Certified in Oracle Data Science, covering machine learning pipelines, model training, and data analysis workflows.",
+    certLink: "https://drive.google.com/file/d/1qfKosWkVZmyURC30S8Uf3N4X79JdND49/view?usp=sharing",
+  },
+];
+
+// ─── Education ─────────────────────────────────────────────────────────────────
+
+export const education = [
+  {
+    id: "be",
+    degree: "B.E. Computer Science",
+    institution: "Matrushri Engineering College",
+    period: "2022 — 2026",
+    grade: "8.23 CGPA",
+    gradeLabel: "CGPA",
+    current: true,
+  },
+  {
+    id: "xii",
+    degree: "Class XII",
+    institution: "MS Junior College",
+    period: "2022",
+    grade: "96.6%",
+    gradeLabel: "Score",
+    current: false,
+  },
+  {
+    id: "x",
+    degree: "Class X",
+    institution: "MS Creative School",
+    period: "2020",
+    grade: "10 / 10",
+    gradeLabel: "CGPA",
+    current: false,
   },
 ];
 

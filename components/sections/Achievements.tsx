@@ -74,7 +74,7 @@ export default function Achievements() {
                     fontSize: "10px",
                   }}
                 >
-                  [ VIEW PROOF ]
+                  [ CERTIFICATE ]
                 </a>
               )}
             </motion.div>
