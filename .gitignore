@@ -41,7 +41,3 @@ yarn-error.log*
 Thumbs.db
 *.pem
 
-# ─── Agent / AI assistant files (not for public repo) ─────────────────────────
-AGENTS.md
-CLAUDE.md
-.agents/
