@@ -13,6 +13,7 @@ import Projects from "@/components/sections/Projects";
 import Experience from "@/components/sections/Experience";
 import Education from "@/components/sections/Education";
 import Achievements from "@/components/sections/Achievements";
+import Certifications from "@/components/sections/Certifications";
 import Contact from "@/components/sections/Contact";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import Marquee from "@/components/ui/Marquee";
@@ -95,6 +96,11 @@ export default function Home() {
         {/* Achievements */}
         <section id="achievements">
           <Achievements />
+        </section>
+
+        {/* Certifications */}
+        <section id="certifications">
+          <Certifications />
         </section>
 
         {/* Contact */}

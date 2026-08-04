@@ -302,6 +302,11 @@ export const achievements = [
     description: "Presented a major interdepartmental project poster, recognized for technical depth and innovation.",
     certLink: "https://drive.google.com/file/d/1ULUg-jlEPds7P6HX-RhArRQvR1imBV5K/view?usp=sharing",
   },
+];
+
+// ─── Certifications ────────────────────────────────────────────────────────────
+
+export const certifications = [
   {
     label: "Oracle Developer Professional",
     context: "Oracle Certification",
@@ -375,6 +380,8 @@ export const terminalCommands: Record<string, string> = {
   projects       - list all projects
   experience     - view experience timeline
   education      - view education
+  achievements   - view achievements
+  certifications - view certifications
   resume         - download resume PDF
   github         - open GitHub profile
   leetcode       - open LeetCode profile
@@ -417,6 +424,9 @@ Focus:    Building AI Systems`,
   [2022]      Class XII — MS Junior College                          Score: 96.6%
   [2020]      Class X  — MS Creative School                         CGPA: 10/10`,
 
+  achievements: "Navigating to achievements...",
+  certifications: "Navigating to certifications...",
+
   resume: `Initiating download: resume.pdf
   [##########] 100%
   Done.`,
@@ -454,6 +464,7 @@ export const commandPaletteItems = [
   { label: "experience", description: "Jump to Experience section", action: "navigate-experience" },
   { label: "education", description: "Jump to Education section", action: "navigate-education" },
   { label: "achievements", description: "Jump to Achievements section", action: "navigate-achievements" },
+  { label: "certifications", description: "Jump to Certifications section", action: "navigate-certifications" },
   { label: "contact", description: "Jump to Contact section", action: "navigate-contact" },
   { label: "github", description: "Open GitHub profile", action: "open-github" },
   { label: "leetcode", description: "Open LeetCode profile", action: "open-leetcode" },

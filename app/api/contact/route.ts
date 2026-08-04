@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,31 +11,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    // ─── Option A: Resend ─────────────────────────────────────────────────────
-    // Uncomment and add RESEND_API_KEY to .env.local to use Resend:
-    //
-    // const { Resend } = await import("resend");
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: "Portfolio <onboarding@resend.dev>",
-    //   to: "your-email@example.com",
-    //   subject: `Mission Control — New message from ${name}`,
-    //   text: `From: ${name} <${email}>\n\n${message}`,
-    // });
+    const { data, error } = await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>",
+      to: process.env.CONTACT_EMAIL || "your_email@example.com",
+      subject: `Mission Control — New message from ${name}`,
+      text: `From: ${name} <${email}>\n\nMessage:\n${message}`,
+    });
 
-    // ─── Option B: Formspree fallback ─────────────────────────────────────────
-    // Uncomment and set FORMSPREE_ENDPOINT in .env.local:
-    //
-    // const res = await fetch(process.env.FORMSPREE_ENDPOINT!, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ name, email, message }),
-    // });
-    // if (!res.ok) throw new Error("Formspree error");
+    if (error) {
+      console.error("[Resend Error]", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
 
-    // For now, log and return success (no external service configured yet)
-    console.log("[Contact]", { name, email, message });
-
+    console.log("[Contact] Email sent successfully", { id: data?.id });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
     console.error("[Contact API Error]", err);

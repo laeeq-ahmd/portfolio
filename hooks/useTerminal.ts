@@ -104,6 +104,24 @@ export function useTerminal(onClose?: () => void) {
         return;
       }
 
+      if (input === "achievements") {
+        setHistory((prev) => [
+          ...prev,
+          { type: "output", text: terminalCommands.achievements },
+        ]);
+        document.getElementById("achievements")?.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      if (input === "certifications") {
+        setHistory((prev) => [
+          ...prev,
+          { type: "output", text: terminalCommands.certifications },
+        ]);
+        document.getElementById("certifications")?.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
       const output = terminalCommands[input];
       if (output) {
         setHistory((prev) => [...prev, { type: "output", text: output }]);
