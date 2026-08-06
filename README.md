@@ -1,8 +1,8 @@
-# Mission Control — Portfolio
+# Portfolio
 
 Personal portfolio of **Laeeq Ahmed** — Software Engineer, AI Engineer, and Full Stack Developer.
 
-#Live at: [laeeq.vercel.app](https://laeeq-ahmed.vercel.app)
+## Live at: [laeeq-ahmed.vercel.app](https://laeeq-ahmed.vercel.app)
 
 ---
 
