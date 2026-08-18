@@ -138,7 +138,7 @@ export const projects: Project[] = [
       { label: "K8s Pods", value: "Deployed" },
     ],
     github: "https://github.com/laeeq-ahmd/",
-    live: "https://careerx.vercel.app",
+    live: "https://careerx-client.onrender.com/",
     status: "ONLINE",
   },
   {
