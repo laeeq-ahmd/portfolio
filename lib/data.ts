@@ -259,7 +259,7 @@ export const experience = [
     id: "viswam",
     role: "AI Developer Intern",
     company: "VisWAM AI",
-    period: "June 2025 — Present",
+    period: "June 2025 — July 2025",
     type: "Internship",
     description:
       "AI Developer intern as part of the Summer of AI 2025 (SoAI) program organized by VisWAM AI (Swetha.IT). Built and evaluated AI models, worked on LangChain and LangGraph pipelines, fine-tuned LLMs, and developed real-world AI applications.",
