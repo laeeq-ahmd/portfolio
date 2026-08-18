@@ -14,12 +14,12 @@ export default function MissionObjectives() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <p className="section-label section-label-green">ABOUT.md</p>
+          <p className="section-label section-label-green">MISSIONS.md</p>
           <h2
             className="text-5xl font-black text-[#f0f0f0] mt-2"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
-            About Me
+            Missions
           </h2>
         </motion.div>
 
@@ -66,22 +66,6 @@ export default function MissionObjectives() {
               >
                 {obj.text}
               </span>
-
-              {/* DONE badge */}
-              {obj.completed && (
-                <span
-                  className="ml-auto shrink-0 text-[10px] font-black px-2 py-1 tracking-widest"
-                  style={{
-                    fontFamily: "JetBrains Mono, monospace",
-                    background: "#39FF14",
-                    color: "#000",
-                    border: "2px solid #39FF14",
-                    boxShadow: "2px 2px 0 #000",
-                  }}
-                >
-                  DONE
-                </span>
-              )}
             </motion.div>
           ))}
         </div>

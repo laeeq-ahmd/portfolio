@@ -58,7 +58,11 @@ export const skillCategories = [
   },
   {
     category: "AI / ML",
-    skills: ["LangChain", "LangGraph", "RAG", "LLMs", "Gemini API"],
+    skills: ["LangChain", "LangGraph", "RAG", "LLMs", "API Integration"],
+  },
+  {
+    category: "Data Science",
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn"],
   },
 ];
 
@@ -262,8 +266,8 @@ export const experience = [
     period: "June 2025 — July 2025",
     type: "Internship",
     description:
-      "AI Developer intern as part of the Summer of AI 2025 (SoAI) program organized by VisWAM AI (Swetha.IT). Built and evaluated AI models, worked on LangChain and LangGraph pipelines, fine-tuned LLMs, and developed real-world AI applications.",
-    tags: ["Python", "LangChain", "LangGraph", "LLMs", "Fine-tuning", "AI Engineering"],
+      "AI Developer intern as part of the Summer of AI 2025 (SoAI) program organized by VisWAM AI (Swetha.IT). Built and evaluated AI models, worked on LangChain pipelines, fine-tuned LLMs, and developed real-world AI applications.",
+    tags: ["Python", "LangChain", "LLMs", "Fine-tuning", "AI Engineering"],
     certLink: "https://drive.google.com/file/d/13nWf3zYjxB01nV1RIVbpg-pgETimon_0/view?usp=drive_link",
     certLabel: "Offer Letter",
   },
@@ -271,7 +275,7 @@ export const experience = [
     id: "infosys",
     role: "AI/ML Intern",
     company: "Infosys Springboard",
-    period: "2024",
+    period: "Nov 2025 — Jan 2026",
     type: "Internship",
     description:
       "Built a Python data pipeline for exoplanet habitability classification. Applied PCA for dimensionality reduction, SMOTE for class imbalance handling, and XGBoost ensemble models. Achieved production-ready accuracy on imbalanced astronomical datasets.",
@@ -335,7 +339,7 @@ export const education = [
     degree: "B.E. Computer Science",
     institution: "Matrushri Engineering College",
     period: "2022 — 2026",
-    grade: "8.23 CGPA",
+    grade: "8.23 / 10",
     gradeLabel: "CGPA",
     current: true,
   },
