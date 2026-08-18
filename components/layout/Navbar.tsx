@@ -12,7 +12,7 @@ const navLinks = [
   { label: "CONTACT", href: "#contact" },
 ];
 
-const RESUME_URL = "/resume.pdf";
+const RESUME_URL = "/AI%20and%20SDE%20Resume.pdf";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
