@@ -178,8 +178,8 @@ const visualMap = {
 // ─── Status badge colors ───────────────────────────────────────────────────────
 const statusColors = {
   OPERATIONAL: "#22c55e",
-  MONITORING: "#06b6d4",
-  ONLINE: "#22c55e",
+  CODE_ONLY:   "#f59e0b",
+  ONLINE:      "#22c55e",
 };
 
 // ─── Project Card ─────────────────────────────────────────────────────────────

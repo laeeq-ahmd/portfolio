@@ -101,7 +101,7 @@ export type Project = {
   metrics: { label: string; value: string }[];
   github: string;
   live?: string;
-  status: "OPERATIONAL" | "MONITORING" | "ONLINE";
+  status: "OPERATIONAL" | "CODE_ONLY" | "ONLINE";
 };
 
 export const projects: Project[] = [
@@ -138,7 +138,8 @@ export const projects: Project[] = [
       { label: "K8s Pods", value: "Deployed" },
     ],
     github: "https://github.com/laeeq-ahmd/",
-    status: "OPERATIONAL",
+    live: "https://careerx.vercel.app",
+    status: "ONLINE",
   },
   {
     id: "smartfire",
@@ -167,10 +168,10 @@ export const projects: Project[] = [
       { label: "Detection Accuracy", value: "94.2%" },
       { label: "Alert Latency", value: "< 3s" },
       { label: "IoT Sensors", value: "ESP32" },
-      { label: "Infrastructure", value: "AWS" },
+      { label: "Infrastructure", value: "AWS (paused)" },
     ],
     github: "https://github.com/laeeq-ahmd/",
-    status: "MONITORING",
+    status: "CODE_ONLY",
   },
   {
     id: "tictactoe",
