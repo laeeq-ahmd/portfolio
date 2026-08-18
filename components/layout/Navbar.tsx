@@ -12,6 +12,8 @@ const navLinks = [
   { label: "CONTACT", href: "#contact" },
 ];
 
+const RESUME_URL = "/resume.pdf";
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -92,7 +94,17 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
-            </div>
+              {/* Resume button */}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nb-btn"
+              style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "10px", padding: "5px 12px" }}
+            >
+              RESUME ↗
+            </a>
+          </div>
 
             {/* Terminal hint */}
             <span
