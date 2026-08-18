@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Laeeq Ahmed — Mission Control",
+  title: "Laeeq Ahmed — Portfolio",
   description:
     "Portfolio of Laeeq Ahmed — Software Engineer, AI Engineer, and Full Stack Developer. Building AI-powered systems, cloud-native backends, and full-stack products.",
   keywords: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Laeeq Ahmed", url: "https://github.com/laeeq-ahmd/" }],
   creator: "Laeeq Ahmed",
   openGraph: {
-    title: "Laeeq Ahmed — Mission Control",
+    title: "Laeeq Ahmed — Portfolio",
     description:
       "Software Engineer | AI Engineer | Full Stack Developer. Explore CareerX AI, SmartFirePredict, and more.",
     type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Laeeq Ahmed — Mission Control",
+    title: "Laeeq Ahmed — Portfolio",
     description: "Software Engineer | AI Engineer | Full Stack Developer",
   },
   robots: {
