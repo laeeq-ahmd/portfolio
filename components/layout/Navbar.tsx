@@ -99,13 +99,15 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Desktop terminal hint */}
-            <span
+            {/* Desktop terminal hint — clickable */}
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-terminal"))}
               className="hidden md:block text-xs text-[#888] nb-btn"
               style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "10px" }}
+              title="Open terminal"
             >
               Ctrl+`
-            </span>
+            </button>
 
             {/* Mobile right side: quick-action buttons + hamburger */}
             <div className="flex md:hidden items-center gap-2">
