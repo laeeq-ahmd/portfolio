@@ -26,8 +26,13 @@ export default function TerminalOverlay() {
       }
       if (e.key === "Escape") setIsOpen(false);
     };
+    const handleOpen = () => setIsOpen(true);
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("open-terminal", handleOpen);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("open-terminal", handleOpen);
+    };
   }, []);
 
   useEffect(() => {

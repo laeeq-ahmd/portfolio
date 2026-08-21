@@ -176,29 +176,37 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Keyboard shortcut hints */}
+          {/* Keyboard / tap shortcuts */}
           <div className="flex items-center gap-4 flex-wrap">
             {[
-              { key: "Ctrl + `", desc: "open terminal" },
-              { key: "Ctrl + K", desc: "command palette" },
-            ].map(({ key, desc }) => (
-              <div key={key} className="flex items-center gap-2">
+              { key: "Ctrl + `", desc: "terminal",  event: "open-terminal" },
+              { key: "Ctrl + K", desc: "palette",   event: "open-palette" },
+            ].map(({ key, desc, event }) => (
+              <button
+                key={key}
+                onClick={() => window.dispatchEvent(new Event(event))}
+                className="flex items-center gap-2 group"
+                title={`Open ${desc}`}
+              >
                 <kbd
-                  className="px-2 py-1 text-[10px] tracking-widest font-bold"
+                  className="px-2 py-1 text-[10px] tracking-widest font-bold transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-active:shadow-none"
                   style={{
                     fontFamily: "JetBrains Mono, monospace",
                     background: "#FFE500",
                     border: "2px solid #FFE500",
                     color: "#000",
                     boxShadow: "2px 2px 0 #000",
+                    cursor: "pointer",
                   }}
                 >
                   {key}
                 </kbd>
                 <span className="text-[10px] text-[#555]" style={{ fontFamily: "JetBrains Mono, monospace" }}>
-                  {desc}
+                  {/* Desktop: show key desc, mobile: show TAP */}
+                  <span className="hidden sm:inline">{desc}</span>
+                  <span className="sm:hidden">tap → {desc}</span>
                 </span>
-              </div>
+              </button>
             ))}
           </div>
         </motion.div>

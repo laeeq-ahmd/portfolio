@@ -30,10 +30,14 @@ export function useCommandPalette() {
         close();
       }
     };
-
+    const handleOpen = () => open();
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, toggle, close]);
+    window.addEventListener("open-palette", handleOpen);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("open-palette", handleOpen);
+    };
+  }, [isOpen, toggle, close, open]);
 
   return { isOpen, query, setQuery, open, close, toggle };
 }
